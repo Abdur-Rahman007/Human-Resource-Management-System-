@@ -1,0 +1,138 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminMaster.master.cs" Inherits="JobFinder.Admin.AdminMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>HRMS</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../bootstrap.min.css">
+
+        <link rel="stylesheet" href="../styles.css">
+        <link rel="stylesheet" href="../theme.css">
+            
+        <script src="../assets/vendor/jquery-1.12.4.min.js"></script>
+        <script src="../assets/js/popper.min.js"></script> 
+        <script src="../assets/js/bootstrap.min.js"></script> 
+        <script src="https://kit.fontawesome.com/b99e675b6e.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+
+
+        <script>
+            $(document).ready(function () {
+                $(".sidebar_menu li").click(function () {
+                    $(".sidebar_menu li").removeClass("active");
+                    $(this).addClass("active");
+                });
+
+                $(".hamburger").click(function () {
+                    $(".wrapper").addClass("active");
+                });
+
+                $(".close, .bg_shadow").click(function () {
+                    $(".wrapper").removeClass("active");
+                });
+            });
+        </script>
+
+        <script>
+            $(function () {
+                // this will get the full URL at the address bar
+                var url = window.location.href;
+
+                //passes on every "a" tag
+                $("#sub-header a").each(function () {
+                    // checks if its the same on the address bar
+                    if (url == (this.href)) {
+                        $(this).closest("li").addClass("active");
+                    }
+                });
+            });
+        </script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="wrapper">
+            <div class="sidebar">
+                <div class="bg_shadow"></div>
+                 <div class="sidebar_inner" id="sub-header">
+                     <div class="close">
+                         <i class="fas fa-times"></i>
+                     </div>
+                     <div class="profile_info">
+                        <div class="profile_data">
+                            <p class="name">ADMIN PANEL</p>
+                        </div>
+                     </div>                                    
+                     <ul class="sidebar_menu">
+                         <li style="text-align: center;">
+                             <a href="Dashboard.aspx">
+                                 <div class="title">Dashboard</div>
+                             </a>
+                         </li>
+                         <li style="text-align: center;">
+                            <a href="NewJob.aspx">
+                                <div class="title">New Job</div>
+                            </a>
+                         </li>
+                         <li style="text-align: center;">
+                            <a href="JobList.aspx">
+                                <div class="title">Job List</div>
+                            </a>
+                          </li>  
+                         <li style="text-align: center;">
+                             <a href="AddNews.aspx">
+                                 <div class="title">Add News</div>
+                             </a>
+                         </li>
+                         <li style="text-align: center;">
+                            <a href="NewsList.aspx">
+                                <div class="title">News List</div>
+                            </a>
+                        </li>
+                          <li style="text-align: center;">
+                              <a href="UserList.aspx">
+                                 <div class="title">User List</div>
+                              </a>
+                          </li>
+                          <li style="text-align: center;">
+                             <a href="ReviewList.aspx">
+                                 <div class="title">Review List</div>
+                             </a>
+                          </li>
+                         <li style="text-align: center;">
+                            <a href="PaymentHistory.aspx">
+                               <div class="title">Payment History</div>
+                            </a>
+                         </li>
+                         <li style="text-align: center;">
+                             <a href="ContactList.aspx">
+                               <div class="title">Contact List</div>
+                             </a>
+                         </li>
+                     </ul>
+                     <div class="logout_btn">
+                         <asp:LinkButton ID="btnLogOut" runat="server" CausesValidation="false" OnClick="btnLogOut_Click">Logout</asp:LinkButton>
+                     </div>
+                 </div>
+            </div>
+            <div class="main_container">
+                <div class="navbar">
+                    <div class="hamburger">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <div class="logo">
+                        <label>Human Resource Management System</label>
+                    </div>
+                </div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
